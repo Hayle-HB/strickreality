@@ -41,16 +41,20 @@
     </style>
   </head>
   <body class="bg-gray-50 min-h-screen">
-    <div class="max-w-4xl mx-auto p-5">
-      <div class="bg-white p-8 rounded-xl shadow-lg">
-        <div class="flex items-center justify-center mb-8">
-          <i class="fas fa-file-invoice-dollar text-brand text-4xl mr-3"></i>
-          <h2 class="text-3xl font-bold text-brand uppercase tracking-wide">
+    <div class="max-w-4xl mx-auto p-2 sm:p-5">
+      <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg">
+        <div class="flex items-center justify-center mb-6 sm:mb-8">
+          <i
+            class="fas fa-file-invoice-dollar text-brand text-3xl sm:text-4xl mr-2 sm:mr-3"
+          ></i>
+          <h2
+            class="text-2xl sm:text-3xl font-bold text-brand uppercase tracking-wide"
+          >
             Strike Realty Invoice Form
           </h2>
         </div>
 
-        <form id="invoiceForm" class="space-y-8">
+        <form id="invoiceForm" class="space-y-4 sm:space-y-8">
           <div>
             <label class="block text-sm font-semibold text-gray-700 mb-2">
               Bill To:
@@ -58,38 +62,40 @@
             <input
               type="text"
               name="customerName"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+              class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200 text-sm sm:text-base"
               placeholder="Enter customer name"
               required
             />
           </div>
 
-          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+          <div class="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200">
             <h3
-              class="text-xl font-semibold text-brand mb-6 pb-2 border-b-2 border-b-brand"
+              class="text-lg sm:text-xl font-semibold text-brand mb-4 sm:mb-6 pb-2 border-b-2 border-b-brand"
             >
               Itemized Costs
             </h3>
             <div id="itemsContainer">
-              <div class="item-row flex gap-4 mb-4 items-center">
+              <div
+                class="item-row flex flex-col sm:flex-row gap-2 sm:gap-4 mb-4 items-stretch sm:items-center"
+              >
                 <input
                   type="text"
                   name="items[0][description]"
-                  class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                  class="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   placeholder="Description"
                   required
                 />
                 <input
                   type="number"
                   name="items[0][cost]"
-                  class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                  class="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   placeholder="Cost"
                   step="0.01"
                   required
                 />
                 <button
                   type="button"
-                  class="remove-item w-10 h-10 bg-brand text-white rounded-lg flex items-center justify-center hover:bg-brand-dark transition-all duration-200 shadow-sm"
+                  class="remove-item w-full sm:w-10 h-10 bg-brand text-white rounded-lg flex items-center justify-center hover:bg-brand-dark transition-all duration-200 shadow-sm"
                 >
                   <i class="fas fa-trash text-sm"></i>
                 </button>
@@ -98,20 +104,20 @@
             <button
               type="button"
               id="addItemBtn"
-              class="mt-4 px-6 py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 flex items-center gap-2 shadow-sm"
+              class="mt-4 px-4 sm:px-6 py-2 sm:py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base shadow-sm"
             >
               <i class="fas fa-plus text-sm"></i>
               Add Another Item
             </button>
           </div>
 
-          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+          <div class="bg-gray-50 p-4 sm:p-6 rounded-xl border border-gray-200">
             <h3
-              class="text-xl font-semibold text-brand mb-6 pb-2 border-b-2 border-b-brand"
+              class="text-lg sm:text-xl font-semibold text-brand mb-4 sm:mb-6 pb-2 border-b-2 border-b-brand"
             >
               Summary
             </h3>
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
               <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                   Gross Amount:
@@ -119,7 +125,7 @@
                 <input
                   type="text"
                   id="grossAmount"
-                  class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg font-semibold"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg font-semibold text-sm sm:text-base"
                   readonly
                 />
               </div>
@@ -130,7 +136,7 @@
                 <input
                   type="text"
                   id="managementFee"
-                  class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg font-semibold"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg font-semibold text-sm sm:text-base"
                   readonly
                 />
               </div>
@@ -141,7 +147,7 @@
                 <input
                   type="text"
                   id="totalAmount"
-                  class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg font-semibold"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg font-semibold text-sm sm:text-base"
                   readonly
                 />
               </div>
@@ -152,7 +158,7 @@
                 <input
                   type="number"
                   name="amountPaid"
-                  class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   step="0.01"
                   placeholder="Enter amount paid"
                 />
@@ -163,7 +169,7 @@
           <button
             type="submit"
             id="submitBtn"
-            class="w-full py-4 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide font-bold shadow-md"
+            class="w-full py-3 sm:py-4 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide font-bold shadow-md text-sm sm:text-base"
           >
             Generate Invoice
           </button>
@@ -171,7 +177,7 @@
 
         <div
           id="message"
-          class="mt-6 p-4 rounded-lg text-center shadow-sm hidden"
+          class="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg text-center shadow-sm hidden text-sm sm:text-base"
         ></div>
       </div>
     </div>
@@ -188,26 +194,27 @@
         // Add new item row
         addItemBtn.addEventListener("click", function () {
           const newRow = document.createElement("div");
-          newRow.className = "item-row flex gap-4 mb-4 items-center";
+          newRow.className =
+            "item-row flex flex-col sm:flex-row gap-2 sm:gap-4 mb-4 items-stretch sm:items-center";
           newRow.innerHTML = `
                     <input
                         type="text"
                         name="items[${itemCount}][description]"
-                        class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                        class="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                         placeholder="Description"
                         required
                     />
                     <input
                         type="number"
                         name="items[${itemCount}][cost]"
-                        class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                        class="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                         placeholder="Cost"
                         step="0.01"
                         required
                     />
                     <button
                         type="button"
-                        class="remove-item w-10 h-10 bg-brand text-white rounded-lg flex items-center justify-center hover:bg-brand-dark transition-all duration-200 shadow-sm"
+                        class="remove-item w-full sm:w-10 h-10 bg-brand text-white rounded-lg flex items-center justify-center hover:bg-brand-dark transition-all duration-200 shadow-sm"
                     >
                         <i class="fas fa-trash text-sm"></i>
                     </button>
@@ -259,7 +266,7 @@
                     <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 `;
           messageDiv.className =
-            "mt-6 p-4 rounded-lg text-center shadow-sm hidden";
+            "mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg text-center shadow-sm hidden text-sm sm:text-base";
 
           try {
             const formData = new FormData(form);
@@ -318,27 +325,27 @@
             // Create a modal for PDF preview and download options
             const modal = document.createElement("div");
             modal.className =
-              "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+              "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4";
             modal.innerHTML = `
-              <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4">
+              <div class="bg-white rounded-lg p-4 sm:p-6 w-full max-w-4xl">
                 <div class="flex justify-between items-center mb-4">
-                  <h3 class="text-xl font-semibold text-brand">Invoice Generated Successfully!</h3>
+                  <h3 class="text-lg sm:text-xl font-semibold text-brand">Invoice Generated Successfully!</h3>
                   <button class="text-gray-500 hover:text-gray-700" onclick="this.closest('.fixed').remove()">
                     <i class="fas fa-times"></i>
                   </button>
                 </div>
                 <div class="space-y-4">
-                  <div class="flex gap-4">
-                    <button id="viewPdfBtn" class="flex-1 py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 flex items-center justify-center gap-2">
+                  <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                    <button id="viewPdfBtn" class="flex-1 py-2 sm:py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base">
                       <i class="fas fa-eye"></i>
                       View PDF
                     </button>
-                    <button id="downloadPdfBtn" class="flex-1 py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 flex items-center justify-center gap-2">
+                    <button id="downloadPdfBtn" class="flex-1 py-2 sm:py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base">
                       <i class="fas fa-download"></i>
                       Download PDF
                     </button>
                   </div>
-                  <div id="pdfPreview" class="hidden w-full h-[600px] border rounded-lg overflow-hidden">
+                  <div id="pdfPreview" class="hidden w-full border rounded-lg overflow-hidden" style="height: calc(100vh - 200px);">
                     <iframe id="pdfFrame" class="w-full h-full"></iframe>
                   </div>
                 </div>
@@ -383,11 +390,11 @@
 
             // Show success message
             messageDiv.className =
-              "mt-6 p-4 rounded-lg text-center shadow-sm bg-green-500 text-white";
+              "mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg text-center shadow-sm bg-green-500 text-white";
             messageDiv.textContent = "Invoice generated successfully!";
           } catch (error) {
             messageDiv.className =
-              "mt-6 p-4 rounded-lg text-center shadow-sm bg-red-500 text-white";
+              "mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg text-center shadow-sm bg-red-500 text-white";
             messageDiv.textContent =
               error.message || "Failed to generate invoice. Please try again.";
           } finally {
