@@ -1,0 +1,6 @@
+{
+  "ignore": ["back/public/data/*.json", "*.json"],
+  "watch": ["back"],
+  "ext": "js",
+  "delay": "2"
+}

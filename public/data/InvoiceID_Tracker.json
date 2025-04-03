@@ -1,0 +1,185 @@
+{
+  "last_invoice_number": 202504044,
+  "invoices": [
+    {
+      "number": 202504001,
+      "date": "2025-04-01",
+      "client": "JUSTIN MARX"
+    },
+    {
+      "number": 202504010,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504011,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504012,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504013,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504014,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504015,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504016,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504017,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504018,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504019,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504020,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504021,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504022,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504023,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504024,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504025,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504026,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504027,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504028,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504029,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504030,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504031,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504032,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504033,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504034,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504035,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504036,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504037,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504038,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504039,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504040,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504041,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504042,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504043,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    },
+    {
+      "number": 202504044,
+      "date": "2025-04-03",
+      "client": "John Smith"
+    }
+  ]
+}

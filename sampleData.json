@@ -1,0 +1,21 @@
+{
+  "customerName": "John Smith",
+  "items": [
+    {
+      "description": "Property Management Services",
+      "cost": 1500.0
+    },
+    {
+      "description": "Maintenance and Repairs",
+      "cost": 750.0
+    },
+    {
+      "description": "Marketing and Advertising",
+      "cost": 500.0
+    }
+  ],
+  "amountPaid": 2750.0,
+  "grossAmount": 2750.0,
+  "managementFee": 275.0,
+  "totalAmount": 3025.0
+}

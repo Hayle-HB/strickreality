@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Generator API</title>
+    <style>
+      :root {
+        --brand-color: #e31e24;
+        --brand-dark: #c41920;
+        --text-color: #333;
+        --bg-light: #f8f9fa;
+        --border-color: #dee2e6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-light);
+      }
+
+      .navbar {
+        background-color: var(--brand-color);
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 4rem 0;
+        background: white;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        color: var(--brand-color);
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .api-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .endpoint {
+        background: var(--bg-light);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        border-left: 4px solid var(--brand-color);
+      }
+
+      .endpoint h3 {
+        color: var(--brand-color);
+        margin-bottom: 1rem;
+      }
+
+      pre {
+        background: #2d2d2d;
+        color: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+
+      code {
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .method {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        background: var(--brand-color);
+        color: white;
+        border-radius: 4px;
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      .endpoint-url {
+        font-family: monospace;
+        color: #666;
+      }
+
+      .response-example {
+        margin-top: 2rem;
+      }
+
+      .try-it {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .try-it-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--brand-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .try-it-button:hover {
+        background: var(--brand-dark);
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          padding: 1rem;
+        }
+
+        .hero {
+          padding: 2rem 0;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-content">
+        <div class="logo">Invoice Generator API</div>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="hero">
+        <h1>Professional PDF Invoice Generation</h1>
+        <p>
+          Generate beautiful, professional invoices with our easy-to-use API.
+          Perfect for businesses of all sizes.
+        </p>
+      </div>
+
+      <div class="api-section">
+        <h2>API Documentation</h2>
+
+        <div class="endpoint">
+          <h3>
+            <span class="method">POST</span>
+            <span class="endpoint-url">/api/pdf/generate-invoice</span>
+          </h3>
+          <p>
+            Generates a professional PDF invoice based on the provided data.
+          </p>
+
+          <h4>Request Body:</h4>
+          <pre><code>{
+    "invoiceNumber": "INV-001",
+    "date": "2024-02-20",
+    "dueDate": "2024-03-20",
+    "customerName": "John Doe",
+    "customerAddress": "123 Customer St",
+    "customerCity": "Customer City",
+    "customerState": "CS",
+    "customerZip": "12345",
+    "items": [
+        {
+            "description": "Item 1",
+            "quantity": 1,
+            "unitPrice": 100.00
+        }
+    ],
+    "notes": "Thank you for your business!"
+}</code></pre>
+
+          <div class="response-example">
+            <h4>Response:</h4>
+            <pre><code>{
+    "success": true,
+    "pdfUrl": "data:application/pdf;base64,..."
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h2>Example Usage</h2>
+        <p>Test the API using tools like Postman or curl:</p>
+        <pre><code>curl -X POST http://localhost:2000/api/pdf/generate-invoice \
+-H "Content-Type: application/json" \
+-d '{
+    "invoiceNumber": "INV-001",
+    "date": "2024-02-20",
+    "dueDate": "2024-03-20",
+    "customerName": "John Doe",
+    "customerAddress": "123 Customer St",
+    "customerCity": "Customer City",
+    "customerState": "CS",
+    "customerZip": "12345",
+    "items": [
+        {
+            "description": "Item 1",
+            "quantity": 1,
+            "unitPrice": 100.00
+        }
+    ],
+    "notes": "Thank you for your business!"
+}'</code></pre>
+
+        <div class="try-it">
+          <a href="#" class="try-it-button">Try It Now</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
