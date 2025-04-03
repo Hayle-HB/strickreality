@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strike Realty Invoice Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --brand-color: #b01e23;
+        --brand-color-dark: #8f181c;
+      }
+      .brand-color {
+        color: var(--brand-color);
+      }
+      .bg-brand {
+        background-color: var(--brand-color);
+      }
+      .hover\:bg-brand-dark:hover {
+        background-color: var(--brand-color-dark);
+      }
+      .focus\:ring-brand:focus {
+        --tw-ring-color: var(--brand-color);
+      }
+      .border-brand {
+        border-color: var(--brand-color);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto p-5">
+      <div class="bg-white p-8 rounded-xl shadow-lg">
+        <div class="flex items-center justify-center mb-8">
+          <i
+            class="fas fa-file-invoice-dollar text-[#b01e23] text-4xl mr-3"
+          ></i>
+          <h2 class="text-3xl font-bold text-[#b01e23] uppercase tracking-wide">
+            Strike Realty Invoice Form
+          </h2>
+        </div>
+
+        <form id="invoiceForm" class="space-y-8">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+              Bill To:
+            </label>
+            <input
+              type="text"
+              name="customerName"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+              placeholder="Enter customer name"
+              required
+            />
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h3
+              class="text-xl font-semibold text-[#b01e23] mb-6 pb-2 border-b-2 border-[#b01e23]"
+            >
+              Itemized Costs
+            </h3>
+            <div id="itemsContainer">
+              <div class="item-row flex gap-4 mb-4 items-center">
+                <input
+                  type="text"
+                  name="items[0][description]"
+                  class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                  placeholder="Description"
+                  required
+                />
+                <input
+                  type="number"
+                  name="items[0][cost]"
+                  class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                  placeholder="Cost"
+                  step="0.01"
+                  required
+                />
+                <button
+                  type="button"
+                  class="remove-item w-10 h-10 bg-[#b01e23] text-white rounded-lg flex items-center justify-center hover:bg-[#8f181c] transition-all duration-200 shadow-sm"
+                >
+                  <i class="fas fa-trash text-sm"></i>
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="addItemBtn"
+              class="mt-4 px-6 py-3 bg-[#b01e23] text-white rounded-lg hover:bg-[#8f181c] transition-all duration-200 flex items-center gap-2 shadow-sm"
+            >
+              <i class="fas fa-plus text-sm"></i>
+              Add Another Item
+            </button>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h3
+              class="text-xl font-semibold text-[#b01e23] mb-6 pb-2 border-b-2 border-[#b01e23]"
+            >
+              Summary
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                  Gross Amount:
+                </label>
+                <input
+                  type="text"
+                  id="grossAmount"
+                  class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg font-semibold"
+                  readonly
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                  Project Management Fee (10%):
+                </label>
+                <input
+                  type="text"
+                  id="managementFee"
+                  class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg font-semibold"
+                  readonly
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                  Total Amount:
+                </label>
+                <input
+                  type="text"
+                  id="totalAmount"
+                  class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg font-semibold"
+                  readonly
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                  Amount Paid:
+                </label>
+                <input
+                  type="number"
+                  name="amountPaid"
+                  class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                  step="0.01"
+                  placeholder="Enter amount paid"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            id="submitBtn"
+            class="w-full py-4 bg-[#b01e23] text-white rounded-lg hover:bg-[#8f181c] transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wide font-bold shadow-md"
+          >
+            Generate Invoice
+          </button>
+        </form>
+
+        <div
+          id="message"
+          class="mt-6 p-4 rounded-lg text-center shadow-sm hidden"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("invoiceForm");
+        const itemsContainer = document.getElementById("itemsContainer");
+        const addItemBtn = document.getElementById("addItemBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const messageDiv = document.getElementById("message");
+        let itemCount = 1;
+
+        // Add new item row
+        addItemBtn.addEventListener("click", function () {
+          const newRow = document.createElement("div");
+          newRow.className = "item-row flex gap-4 mb-4 items-center";
+          newRow.innerHTML = `
+                    <input
+                        type="text"
+                        name="items[${itemCount}][description]"
+                        class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                        placeholder="Description"
+                        required
+                    />
+                    <input
+                        type="number"
+                        name="items[${itemCount}][cost]"
+                        class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b01e23] focus:border-transparent transition-all duration-200"
+                        placeholder="Cost"
+                        step="0.01"
+                        required
+                    />
+                    <button
+                        type="button"
+                        class="remove-item w-10 h-10 bg-[#b01e23] text-white rounded-lg flex items-center justify-center hover:bg-[#8f181c] transition-all duration-200 shadow-sm"
+                    >
+                        <i class="fas fa-trash text-sm"></i>
+                    </button>
+                `;
+          itemsContainer.appendChild(newRow);
+          itemCount++;
+          updateTotals();
+        });
+
+        // Remove item row
+        itemsContainer.addEventListener("click", function (e) {
+          if (e.target.closest(".remove-item")) {
+            e.target.closest(".item-row").remove();
+            updateTotals();
+          }
+        });
+
+        // Calculate totals
+        function updateTotals() {
+          let grossAmount = 0;
+          document
+            .querySelectorAll('input[name^="items"][name$="[cost]"]')
+            .forEach((input) => {
+              grossAmount += parseFloat(input.value) || 0;
+            });
+
+          const managementFee = grossAmount * 0.1;
+          const totalAmount = grossAmount + managementFee;
+
+          document.getElementById("grossAmount").value = grossAmount.toFixed(2);
+          document.getElementById("managementFee").value =
+            managementFee.toFixed(2);
+          document.getElementById("totalAmount").value = totalAmount.toFixed(2);
+        }
+
+        // Update totals when costs change
+        itemsContainer.addEventListener("input", function (e) {
+          if (e.target.name.endsWith("[cost]")) {
+            updateTotals();
+          }
+        });
+
+        // Form submission
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `
+                    <span>Generating...</span>
+                    <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                `;
+          messageDiv.className =
+            "mt-6 p-4 rounded-lg text-center shadow-sm hidden";
+
+          try {
+            const formData = new FormData(form);
+            const data = {
+              customerName: formData.get("customerName"),
+              items: [],
+              amountPaid: parseFloat(formData.get("amountPaid")) || 0,
+            };
+
+            // Collect items
+            const itemRows = document.querySelectorAll(".item-row");
+            itemRows.forEach((row) => {
+              data.items.push({
+                description: row.querySelector('input[name$="[description]"]')
+                  .value,
+                cost:
+                  parseFloat(
+                    row.querySelector('input[name$="[cost]"]').value
+                  ) || 0,
+              });
+            });
+
+            // Add summary data
+            data.grossAmount = parseFloat(
+              document.getElementById("grossAmount").value
+            );
+            data.managementFee = parseFloat(
+              document.getElementById("managementFee").value
+            );
+            data.totalAmount = parseFloat(
+              document.getElementById("totalAmount").value
+            );
+
+            const response = await fetch(
+              "http://localhost:2000/api/pdf/generate-invoice",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              }
+            );
+
+            if (!response.ok) {
+              const errorData = await response.json().catch(() => ({}));
+              throw new Error(
+                errorData.error ||
+                  errorData.details ||
+                  "Failed to generate invoice"
+              );
+            }
+
+            const blob = await response.blob();
+            if (!blob || blob.size === 0) {
+              throw new Error("Received empty PDF file");
+            }
+
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `invoice_${
+              new Date().toISOString().split("T")[0]
+            }.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+
+            // Reset form
+            form.reset();
+            while (itemsContainer.children.length > 1) {
+              itemsContainer.removeChild(itemsContainer.lastChild);
+            }
+            itemCount = 1;
+            updateTotals();
+
+            // Show success message
+            messageDiv.className =
+              "mt-6 p-4 rounded-lg text-center shadow-sm bg-green-500 text-white";
+            messageDiv.textContent = "Invoice generated successfully!";
+          } catch (error) {
+            messageDiv.className =
+              "mt-6 p-4 rounded-lg text-center shadow-sm bg-red-500 text-white";
+            messageDiv.textContent =
+              error.message || "Failed to generate invoice. Please try again.";
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Generate Invoice";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

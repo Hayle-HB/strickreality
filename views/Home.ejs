@@ -47,6 +47,22 @@
         font-weight: bold;
       }
 
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 0.3s;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.8;
+      }
+
       .main-content {
         max-width: 1200px;
         margin: 0 auto;
@@ -73,6 +89,54 @@
         color: #666;
         max-width: 600px;
         margin: 0 auto;
+        margin-bottom: 2rem;
+      }
+
+      .options-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .option-card {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .option-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .option-card h3 {
+        color: var(--brand-color);
+        margin-bottom: 1rem;
+      }
+
+      .option-card p {
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .option-button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: var(--brand-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .option-button:hover {
+        background: var(--brand-dark);
       }
 
       .api-section {
@@ -160,6 +224,16 @@
         .hero h1 {
           font-size: 2rem;
         }
+
+        .options-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .option-card {
+          width: 100%;
+          max-width: 300px;
+        }
       }
     </style>
   </head>
@@ -167,6 +241,10 @@
     <nav class="navbar">
       <div class="navbar-content">
         <div class="logo">Invoice Generator API</div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/form">Manual Input</a>
+        </div>
       </div>
     </nav>
 
@@ -177,9 +255,28 @@
           Generate beautiful, professional invoices with our easy-to-use API.
           Perfect for businesses of all sizes.
         </p>
+
+        <div class="options-container">
+          <div class="option-card">
+            <h3>Manual Input</h3>
+            <p>
+              Use our user-friendly form to create invoices without coding
+              knowledge.
+            </p>
+            <a href="/form" class="option-button">Create Invoice</a>
+          </div>
+          <div class="option-card">
+            <h3>API Integration</h3>
+            <p>
+              Integrate our API into your existing systems for automated invoice
+              generation.
+            </p>
+            <a href="#api-docs" class="option-button">View API Docs</a>
+          </div>
+        </div>
       </div>
 
-      <div class="api-section">
+      <div id="api-docs" class="api-section">
         <h2>API Documentation</h2>
 
         <div class="endpoint">
@@ -246,7 +343,7 @@
 }'</code></pre>
 
         <div class="try-it">
-          <a href="#" class="try-it-button">Try It Now</a>
+          <a href="/form" class="try-it-button">Try It Now</a>
         </div>
       </div>
     </div>

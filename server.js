@@ -22,6 +22,11 @@ app.get("/", (req, res) => {
   res.render("Home");
 });
 
+// Form route
+app.get("/form", (req, res) => {
+  res.render("UserForm");
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
