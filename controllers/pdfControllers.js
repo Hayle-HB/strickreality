@@ -46,17 +46,20 @@ const generateInvoice = async (req, res) => {
     const invoiceNumber = updateInvoiceTracker(req.body.customerName);
 
     // Generate PDF with invoice number
-    const result = await generateInvoicePDF(req.body, invoiceNumber);
+    const pdfBuffer = await generateInvoicePDF(req.body, invoiceNumber);
 
-    // Send success response
-    res.status(200).json({
-      success: true,
-      message: "Invoice generated successfully",
-      data: {
-        ...result,
-        invoiceNumber,
-      },
-    });
+    // Set response headers
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=invoice_${req.body.customerName.replace(
+        /[^a-zA-Z0-9]/g,
+        "_"
+      )}_${invoiceNumber}.pdf`
+    );
+
+    // Send the PDF buffer as response
+    res.status(200).send(pdfBuffer);
   } catch (error) {
     console.error("Error processing invoice:", error);
     res.status(500).json({
@@ -351,7 +354,7 @@ const generateInvoicePDF = async (data, invoiceNumber) => {
                         <div class="company-address">(305) 330-2305</div>
                     </div>
                 </div>
-
+                
                 <div class="bill-container">
                     <div class="bill-section">
                         <div class="bill-header">
@@ -439,16 +442,8 @@ const generateInvoicePDF = async (data, invoiceNumber) => {
 
     await page.setContent(htmlContent);
 
-    // Set page size to match typical invoice dimensions
-    await page.pdf({
-      path: path.join(
-        process.env.HOME || process.env.USERPROFILE,
-        "Downloads",
-        `invoice_${data.customerName.replace(
-          /[^a-zA-Z0-9]/g,
-          "_"
-        )}_${invoiceNumber}.pdf`
-      ),
+    // Generate PDF as buffer
+    const pdfBuffer = await page.pdf({
       format: "A4",
       printBackground: true,
       margin: {
@@ -461,18 +456,7 @@ const generateInvoicePDF = async (data, invoiceNumber) => {
 
     await browser.close();
 
-    return {
-      success: true,
-      message: "PDF generated successfully",
-      path: path.join(
-        process.env.HOME || process.env.USERPROFILE,
-        "Downloads",
-        `invoice_${data.customerName.replace(
-          /[^a-zA-Z0-9]/g,
-          "_"
-        )}_${invoiceNumber}.pdf`
-      ),
-    };
+    return pdfBuffer;
   } catch (error) {
     console.error("Error generating PDF:", error);
     throw new Error("Failed to generate PDF: " + error.message);
